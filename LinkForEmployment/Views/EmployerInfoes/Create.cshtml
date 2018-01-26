@@ -1,0 +1,162 @@
+﻿@model jobPortal.ViewModelJobSeeker.EmployerMore
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    var compPhone = 0;
+    var webSite = 0;
+
+    function webSiteAdd() {
+        if (webSite < 5) {
+            $('<div class="form-group"><div class="col-md-offset-2 col-md-6"><input class="col-md-6" type="text" name="WebSiteMore[' + webSite + '].Website" id="webSite[' + webSite + ']" value="" placeholder="example.com"></div></div>').insertBefore("#webSiteMore");
+            ++webSite;
+        }
+    }
+    function compPhoneAdd() {
+
+        if (compPhone < 5) {
+            $('<div class="form-group"><div class="col-md-offset-2 col-md-6"><input class="col-md-4" type="text" name="PhoneNumberMore[' + compPhone + '].Number" id="compPhoneNumber[' + compPhone + ']" placeholder="000000000" value="" maxlength="9"><input class="col-md-2" type="text" name="PhoneNumberMore[' + compPhone + '].Code" id="compZipCode[' + compPhone + ']" value="" placeholder="+967" maxlength="4"></div></div>').insertBefore("#phoneNumberMore");
+            ++compPhone;
+
+        }
+    }
+</script>
+<h2>بيانات الشركة</h2>
+@using (Html.BeginForm("Create", "EmployerInfoes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="text-right form-horizontal">
+
+        <!--<form action="Create" class="form-horizontal" method="post" role="form" enctype="multipart/form-data">-->
+        <div class="divStyle">
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">اسم الشركة</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model=>Model.compName ,new { @class = "col-md-6", id= "compName",value="", maxlength = "20" })
+                    @Html.ValidationMessageFor(model => Model.compName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">موقع الشركة</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => Model.compLocation, new { @class = "col-md-6", id = "compLocation", value = "", maxlength = "20" })
+                    @Html.ValidationMessageFor(model => Model.compLocation, "", new { @class = "text-danger" })
+                 </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">حجم الشركة</label>
+                <div class="col-md-6">
+                @Html.TextBoxFor(model => Model.compSize, new { @class = "col-md-6", id = "compSize", value = "", maxlength = "20" })
+                @Html.ValidationMessageFor(model => Model.compSize, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">مجال العمل</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => Model.compWorkName, new { @class = "col-md-6", id = "compWorkName", value = "", maxlength = "20" ,placeholder="مثلاً :- المجال الطبي"})
+                    @Html.ValidationMessageFor(model => Model.compWorkName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">رقم الهاتف</label>
+                @*<div class="col-md-6">
+                    <input class="col-md-4" type="text" name="compPhoneNumber" id="compPhoneNumber" value="" placeholder="000000000" maxlength="9">
+                    <input class="col-md-2" type="text" name="compZipCode" id="compZipCode" value="" placeholder="+967" maxlength="5">
+                </div>*@
+                <div class="form-group more" id="phoneNumberMore">
+                    <label class="col-md-3" onclick="compPhoneAdd()">المزيد +</label>
+                </div>
+              </div>
+            
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">المسمى الوظيفي</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => Model.JobTitle, new { @class = "col-md-6", id = "JobTitle", value = "", maxlength = "20" ,placeholder="مثلاً :- تسويق أدوية"})
+                    @Html.ValidationMessageFor(model => Model.JobTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">الموقع الألكتروني</label>
+                @*<div class="col-md-6">
+                    <input class="col-md-6" type="text" name="webSite" id="webSite" value="" placeholder="example.com" maxlength="20">
+                </div>*@
+                <div class="form-group more" id="webSiteMore">
+                    <label class="col-md-3 more" onclick="webSiteAdd()">المزيد +</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">شعار الشركة</label>
+                <div class="col-md-6">
+                    <input class="col-xs-6 lableAlign r" type="file" name="uploadLogo" id="compLogo" value="">
+                </div>
+            </div>
+        </div>
+        <h4 class="h4Style">الرسائل الألكترونية والتحديثات &#9899;</h4>
+        <div class="divStyle">
+            <div class="form-group">
+                <div class="col-md-6">
+                    @Html.CheckBoxFor(model=>Model.receiveApplay,new { @class= "col-md-1 h", id = "receiveApplay" ,value = "true" })
+                    @Html.ValidationMessageFor(model => Model.receiveApplay, "", new { @class = "text-danger" })        
+                    <label class="col-md-5 lableAlign">تلقي طلبات التقديم الجديدة</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    @Html.CheckBoxFor(model => Model.reportAndUpdate, new { @class = "col-md-1 h", id = "reportAndUpdate" ,value = "true" })
+                    @Html.ValidationMessageFor(model => Model.receiveApplay, "", new { @class = "text-danger" })
+                    <label class="col-md-5 lableAlign">التقارير والتحديثات </label>
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-primary myBtn" value="تأكيد">
+            </div>
+        </div>
+        <!--</form>-->
+
+    </div>
+
+}
+<script id="script1">
+        $(function () {
+            webSiteAdd();
+            compPhoneAdd();
+            function checkcopLogo() {
+                if ($("#compLogo").val() != "") {
+                    //Check if extension Enterd is Valid
+                    var fileName = $("#compLogo").val();
+                    var extensionImage = fileName.substr(fileName.lastIndexOf('.') + 1);
+                    var validExtensions = ['jpg', 'png', 'gif', 'bmp'];
+
+                    if ($.inArray(extensionImage, validExtensions) == -1) {
+                        $("#error-div").fadeIn();
+                        $("#view-error").text("رجا يجب ادخال مكان صورة الشعار احد هذه الأنواع من الصور jpg أو png أو gif أو bmp !");
+                        $("html, body").animate({ scrollTop: 0 }, "slow");
+                        return false;
+                    }
+
+                    //Check if image size is valid
+                    var fileSize = document.getElementById("compLogo").files[0].size / 1024 / 1024;
+                    if (fileSize > 2) {
+                        $("#error-div").fadeIn();
+                        $("#view-error").text("رجا قم بإدخال صورة الشعار اقل من 2 ميقا بايت !");
+                        $("html, body").animate({ scrollTop: 0 }, "slow");
+                        return false;
+                    }
+                }
+            }
+            $("#save").click(function () {
+                alert("You Clicked Save");
+                checkcopLogo();
+            });
+
+        });
+</script>

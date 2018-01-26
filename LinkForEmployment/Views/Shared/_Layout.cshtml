@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرحباً بكم على موقع لينك للتوظيف</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    @Html.Partial("_HomeNavbar")
+    <!--Body Content-->
+
+    <div class="container-fluid pageContent myContainer" id="cont">
+
+        <div class="row">
+            @RenderBody()
+            <hr />
+        </div>
+    </div>
+
+    <!--Footer Content-->
+    <footer class="page-footer">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-8 right-footer">
+                    <div class="row">
+
+                        <h4 id="how-use">كيف تستخدم موقع لينك ؟</h4>
+                        <ul class="top-footer">
+                            <li>
+                                <a>بحث عن وظائف</a>
+                            </li>
+                            <li>
+                                <a>إدارة طلبات الوظائف</a>
+                            </li>
+                            <li>
+                                <a>إنشاء سيرتك الذاتية </a>
+
+
+                            </li>
+                            <li>
+                                <a>نشر وظيفة</a>
+                            </li>
+                            <li>
+                                <a>إدارة طلبات التقدم</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row aboutIt">
+                        <h4>نبذة عن موقع لينك :</h4>
+                        <p>
+                            إن موقع لينك لتوظيف هو أكبر موقع للوظائف في الشرق الأوسط, حيث يقدم مجموعة كاملة من حلول التوظيف الشاملة والمتكاملة وأدوات التخطيط المهني. ويعمل موقع بيت.كوم الذي تم تأسيسه في العام 2000 بفاعلية كاملة باللغة العربية، والإنكليزية والفرنسية وهو يوفر الطرق الأسرع والأسهل والأكثر فعالية ومردوداً لأصحاب العمل لكي يجدوا نخبة المرشحين للوظائف، وللباحثين عن عمل لكي يجدوا أفضل الوظائف في منطقة الشرق الأوسط وشمال أفريقيا. تجدر الإشارة الى أن بيت.كوم يساعد كل من الباحثين عن عمل وأصحاب عمل على التواصل مع بعضهم البعض من دون التدخل في أي عملية توظيف تتم عبر الموقع.
+                        </p>
+                        <a href="#">
+                            <img src="~/images/facebookIcon.png" />
+                        </a>
+                        <a href="#">
+                            <img src="~/images/icons8-googleplus.png" />
+                        </a>
+                        <a href="#">
+                            <img src="~/images/TwitterIcon.png" />
+                        </a>
+                        <a href="#">
+                            <img src="~/images/YoutubeIcon.png" />
+                        </a>
+
+                    </div>
+                </div>
+                <div class="messaging form-horizontal col-xs-4">
+                    <div class="row">
+                        <h4>تواصل معنا </h4>
+                        <div class="input-group send-message">
+                            <div class="form-group feildInmessage">
+
+                                <label>الأسم الكامل </label>
+                                <input type="text" name="Name" id="fulName" class="preMsg" />
+
+                            </div>
+                            <div class="form-group feildInmessage">
+                                <label>البريد الإلكتروني </label>
+                                <input type="text" name="Email" class="preMsg" />
+                            </div>
+                            <div class="form-group feildInmessage">
+                                <label>موضوع الرسالة  </label>
+                                <input type="text" name="subject" class="preMsg" />
+                            </div>
+                            <div class="form-group feildInmessage">
+                                <label>نص الرسالة  </label>
+                                <textarea name="Message" rows="5" cols="20" id="textArea"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="send" value="ارسال" class="btn btn-group-vertical" id="btnSend" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <hr id="line-raw" />
+                <span class="copyRight">
+                    <i class="glyphicon glyphicon-copyright-mark"></i>
+                    جميع الحقوق محفوظة لموقع لينك للتوظيف
+                </span>
+                <span class="languages">
+                    <a>English</a>
+                    <a>عربي</a>
+                </span>
+            </div>
+
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Style.js"></script>
+    <script src="~/Scripts/OurJQuery.js"></script>
+</body>
+</html>

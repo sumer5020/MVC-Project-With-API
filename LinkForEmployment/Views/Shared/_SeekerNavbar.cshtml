@@ -1,0 +1,90 @@
+﻿<link href="~/Content/StyleSeekerNavbar.css" rel="stylesheet" />
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">
+                <img class="logo-img" src="~/images/Job-Searh-icon-Converted1.png" />
+            </a>
+        </div>
+        <div class="navbar-collapse collapse nav-font">
+            <ul class="nav navbar-nav navbar-text">
+                <li class="navbar-Items">
+                    <a href="~/Home/index" class="hi navbar-Item">
+                        الرئيسية
+                    </a>
+                </li>
+                <li class="dropdown navbar-Items">
+                    <a href="#" class="dropdown-toggle navbar-Item" data-toggle="dropdown">
+                        الوظائف
+                    </a>
+                    <ul class="dropdown-menu dropdownMenu">
+                        <li>
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-12 text-center list-Items">
+                                        <a>بحث عن الوظائف</a> <hr />
+                                        <a>الوظائف المستهدفة</a><hr />
+                                        <a>وظائف ذات علاقة</a><hr />
+                                        <a>احدث الوظائف</a><hr />
+                                        <a>كيف تبحث عن الوظائف</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown navbar-Items">
+                    <a href="#" class="dropdown-toggle navbar-Item" data-toggle="dropdown">
+                        طلبات الوظائف
+                    </a>
+                    <ul class="dropdown-menu dropdownMenu">
+                        <li>
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-12 text-center list-Items">
+                                        <a>طلبات تم التقدم اليها</a> <hr />
+                                        <a>الطلبات المحفوظة</a><hr />
+                                        <a>كيفية إدارة طلبات الوظائف</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown navbar-Items">
+                    <a href="#" class="dropdown-toggle navbar-Item" data-toggle="dropdown">
+                        سيرتي الذاتية
+                    </a>
+                    <ul class="dropdown-menu dropdownMenu">
+                        <li>
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-12 text-center list-Items">
+                                        <a>طلبات تم التقدم اليها</a> <hr />
+                                        <a>الطلبات المحفوظة</a><hr />
+                                        <a>كيفية إدارة طلبات الوظائف</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navbar-Items">
+                    <a href="#" class="navbar-Item">
+                        كيف تستخدم موقع لينك
+                    </a>
+                </li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>

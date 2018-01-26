@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "بيانات الشركة";
+}
+
+<div class="text-right">
+    <form action="#" class="form-horizontal" method="post" role="form">
+        <div class="divStyle">
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">اسم الشركة</label>
+                <div class="col-md-6">
+                    <input class="col-md-6" type="text" name="compName" id="compName" value="" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">شعار الشركة</label>
+                <div class="col-md-6">
+                    <input class="col-xs-6 lableAlign r" type="file" name="compLogo" id="compLogo" value="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">موقع الشركة</label>
+                <div class="col-md-6">
+                    <input class="col-md-6" type="text" name="compLocation" id="compLocation" value="" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">حجم الشركة</label>
+                <div class="col-md-6">
+                    <input class="col-md-6" type="text" name="compSize" id="compSize" value="" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">طبيعة العمل</label>
+                <div class="col-md-6">
+                    <input class="col-md-6" type="text" name="compWorkName" id="compWorkName" value="" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">نبذة عن الشركة</label>
+                <div class="col-md-3">
+                    <textarea class="aligns m" name="companyDescribe" id="companyDescribe" rows="4" cols="50" maxlength="200"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">رقم الهاتف</label>
+                <div class="col-md-6">
+                    <input class="col-md-4" type="text" name="compPhoneNumber" id="compPhoneNumber" value="" placeholder="000000000" maxlength="9">
+                    <input class="col-md-2" type="text" name="compZipCode" id="compZipCode" value="" placeholder="+967" maxlength="5">
+                </div>
+            </div>
+
+
+
+            <div class="form-group more" id="phoneNumberMore">
+                <label class="col-md-3" onclick="compPhoneAdd()">المزيد +</label>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">المسمى الوظيفي</label>
+                <div class="col-md-6">
+                    <input class="col-md-6" type="text" name="compWorkName" id="compWorkName" value="" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">الموقع الألكتروني</label>
+                <div class="col-md-6">
+                    <input class="col-md-6" type="text" name="webSite" id="webSite" value="" placeholder="example.com" maxlength="20">
+                </div>
+            </div>
+            <div class="form-group more" id="webSiteMore">
+                <label class="col-md-3 more" onclick="webSiteAdd()">المزيد +</label>
+            </div>
+        </div>
+        <h4 class="h4Style">الرسائل الألكترونية والتحديثات &#9899;</h4>
+
+        <div class="divStyle">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <input class="col-md-1 h" type="checkbox" name="receiveApplay" id="receiveApplay" value="">
+                    <label class="col-md-5 lableAlign">تلقي طلبات التقديم الجديدة</label>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <input class="col-md-1 h" type="checkbox" name="reportAndUpdata" id="reportAndUpdata" value="">
+                    <label class="col-md-5 lableAlign">التقارير والتحديثات </label>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-primary myBtn" value="تأكيد">
+            </div>
+        </div>
+    </form>
+
+</div>

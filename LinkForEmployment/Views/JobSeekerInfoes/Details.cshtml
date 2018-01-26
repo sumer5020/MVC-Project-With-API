@@ -1,0 +1,403 @@
+﻿@model jobPortal.Models.JobSeekerInfo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>JobSeekerInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.middleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.middleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bornDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bornDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.personalPhoto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.personalPhoto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nationality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nationality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.socialStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.socialStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.countryCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.countryCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dreamJobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dreamJobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobField)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobField)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.experienceLevels)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.experienceLevels)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dreamJobLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dreamJobLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isYouWork)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isYouWork)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.workStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.workStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.workEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.workEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.iWorkNow)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.iWorkNow)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.workLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.workLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compWork)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compWork)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compField)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compField)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.workTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.workTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.workDescribe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.workDescribe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.workCertificate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.workCertificate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.acadimicName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acadimicName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.acadimicType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acadimicType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.acadimicTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acadimicTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.acadimicEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acadimicEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.acadimicCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acadimicCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.acadimicCity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acadimicCity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.acadimicCertificate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acadimicCertificate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.courseTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.courseTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.courseCertificate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.courseCertificate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.examTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.examTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.examCertificate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.examCertificate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isVoluntaryWork)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isVoluntaryWork)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.voluntaryWorkTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voluntaryWorkTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.voluntaryWorkStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voluntaryWorkStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.voluntaryWorkEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voluntaryWorkEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.voluntaryWorkDescribe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voluntaryWorkDescribe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.voluntaryCertificate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.voluntaryCertificate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.skill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.skill)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

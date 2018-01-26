@@ -1,0 +1,36 @@
+﻿@model IEnumerable<LinkForEmployment.Models.ApplyForJob>
+
+@{
+    ViewBag.Title = "الوظائف المتقدم اليها";
+}
+
+<h2>جميع الوظائف المتقدم اليها من طرفكم</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.job.jobName)
+        </th>
+        <th>
+            تاريخ التقدم
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.job.jobName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplyDate)
+            </td>
+            <td>
+                @Html.ActionLink("تفاصيل", "DetailsOfJob", new { id = item.Id }) |
+                @Html.ActionLink("حذف", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

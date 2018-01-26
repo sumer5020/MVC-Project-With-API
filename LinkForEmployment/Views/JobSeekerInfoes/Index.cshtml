@@ -1,0 +1,316 @@
+﻿@model IEnumerable<jobPortal.Models.JobSeekerInfo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.middleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bornDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.personalPhoto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nationality)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.socialStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.countryCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dreamJobTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.jobField)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.experienceLevels)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dreamJobLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.jobTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isYouWork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.workStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.workEndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.iWorkNow)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.workLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compWork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compField)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.workTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.workDescribe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.workCertificate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.acadimicName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.acadimicType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.acadimicTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.acadimicEndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.acadimicCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.acadimicCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.acadimicCertificate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.courseTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.courseCertificate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.examTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.examCertificate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isVoluntaryWork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.voluntaryWorkTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.voluntaryWorkStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.voluntaryWorkEndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.voluntaryWorkDescribe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.voluntaryCertificate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.skill)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.middleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bornDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.personalPhoto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nationality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.socialStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.countryCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dreamJobTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.jobField)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.experienceLevels)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dreamJobLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.jobTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isYouWork)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iWorkNow)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.compName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.compWork)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.compField)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workDescribe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workCertificate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.acadimicName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.acadimicType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.acadimicTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.acadimicEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.acadimicCountry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.acadimicCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.acadimicCertificate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.courseTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.courseCertificate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.examTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.examCertificate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isVoluntaryWork)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.voluntaryWorkTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.voluntaryWorkStartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.voluntaryWorkEndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.voluntaryWorkDescribe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.voluntaryCertificate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.skill)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

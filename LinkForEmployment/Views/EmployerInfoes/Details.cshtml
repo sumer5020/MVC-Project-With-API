@@ -1,0 +1,107 @@
+﻿@model jobPortal.Models.EmployerInfo
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EmployerInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.compName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compWorkName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compWorkName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.webSite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.webSite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.compLogo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.compLogo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.receiveApplay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.receiveApplay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reportAndUpdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reportAndUpdate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

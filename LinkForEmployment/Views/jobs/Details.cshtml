@@ -1,0 +1,123 @@
+﻿@model LinkForEmployment.Models.job
+
+@{
+    ViewBag.Title = "تفاصيل الوظيفة";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>التفاصيل</h2>
+
+<div class="text-right">
+    <h4>الوظيفة</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.jobName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DurationOfEmploymentContract)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DurationOfEmploymentContract)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkingHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkingHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobsalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobsalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.currency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.currency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalaryPaymentPeriod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalaryPaymentPeriod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DurationAvailableForApply)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DurationAvailableForApply)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.applayPeriod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.applayPeriod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.applayConditions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.applayConditions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobDescrib)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobDescrib)
+        </dd>
+
+    </dl>
+</div>
+<h4 style="margin-right:40px;">
+    @Html.ActionLink("تعديل", "Edit", new { id = Model.Id })   |
+    @Html.ActionLink("حذف", "Delete", new { id = Model.Id })   |
+    @Html.ActionLink("العودة الى الصفحة الرئيسية", "Index")
+</h4>

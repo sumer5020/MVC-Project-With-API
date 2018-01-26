@@ -1,0 +1,119 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@model LinkForEmployment.Models.RegisterViewModel
+@{
+    ViewBag.Title = "انشاء حساب";
+}
+<div class="text-right">
+    <h2>@ViewBag.Title.</h2>
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>انشاء حساب جديد</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+            <div class="editor-field col-md-10">
+                @Html.DropDownList("Gender", new List<SelectListItem>
+   {
+       new SelectListItem {Text="ذكر", Value="ذكر", Selected=true },
+       new SelectListItem {Text="انثى", Value="انثى" } }, new { @class = "col-lg-4 control-label" })
+            </div>
+        </div>
+        @*<div class="form-group">
+                @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Gender", null, new { @class = "form-control" })
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+            @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control", placeholder = "اليوم/الشهر/السنة", type = "date", value = "10/11/2011" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.QSecurity, new { @class = "col-md-2 control-label" })
+            <div class="editor-field col-md-10">
+                @Html.DropDownList("QSecurity", new List<SelectListItem>
+   {
+       new SelectListItem {Text="ما هو لقب طفولتك؟", Value="ما هو لقب طفولتك؟", Selected=true },
+       new SelectListItem {Text="ما اسم صديق الطفولة المفضل لديك؟", Value="ما اسم صديق الطفولة المفضل لديك؟" },
+       new SelectListItem {Text="ما هو الشارع الذي عشت فيه في الصف الثالث؟", Value="ما هو الشارع الذي عشت فيه في الصف الثالث؟" },
+       new SelectListItem {Text="ما هي المدرسة التي درست فيها في الصف السادس؟", Value="ما هي المدرسة التي درست فيها في الصف السادس؟" },
+       new SelectListItem {Text="في أي مدينة أو بلدة كانت وظيفتك الأولى؟", Value="في أي مدينة أو بلدة كانت وظيفتك الأولى؟" },
+       new SelectListItem {Text="ما هي اول وظيفة عملت بها؟", Value="ما هي اول وظيفة عملت بها؟" },
+       new SelectListItem {Text="ما هو الفيلم المفضل لديك؟", Value="ما هو الفيلم المفضل لديك؟" },
+       new SelectListItem {Text="ما هو الطعام المفضل لديك في الطفولة؟", Value="ما هو الطعام المفضل لديك في الطفولة؟" },
+       new SelectListItem {Text="ما هي رياضتك المفضلة في المدرسة الثانوية؟", Value="ما هي رياضتك المفضلة في المدرسة الثانوية؟" },
+       new SelectListItem {Text="ما هو طعامك المفضل؟", Value="ما هو طعامك المفضل؟" },
+       new SelectListItem {Text="ما هي السيارة التي تحبها؟", Value="ما هي السيارة التي تحبها؟" },
+       new SelectListItem {Text="ما هو اجمل مكان زرته؟", Value="ما هو اجمل مكان زرته؟" }}, new { @class = "col-md-4 control-label" })
+            </div>
+        </div>
+        @*<div class="form-group">
+                @Html.LabelFor(m => m.QSecurity, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownList("QSecurity", null, new { @class = "form-control" })
+                </div>
+            </div>*@
+        <div class="form-group">
+            @Html.LabelFor(m => m.Answer, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Answer, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            @Html.Captcha(5)
+
+            @*@Html.MathCaptcha()*@
+            <br />
+            <p class="Error">  @ViewBag.ErrMessage </p>
+
+        </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="انضم الان" />
+                </div>
+            </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

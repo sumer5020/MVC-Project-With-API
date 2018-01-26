@@ -1,0 +1,68 @@
+﻿div{
+    box-sizing:border-box;
+}
+
+.pad{
+    padding:5px 10px;
+}
+.myBtn{
+    padding:10px 0;
+    margin-bottom:20px;
+    margin-top:20px;
+    width:50%;
+}
+.spacer{
+    margin-top:30px;
+}
+.top-spaser{
+    margin-top:80px;
+}
+.myTekit{
+    background-color:#eee;
+    border:solid 2px #fff
+}
+input{
+    padding:5px;
+    text-align:right;
+}
+.n{
+    padding:0 10px;
+}
+.m{
+    padding:7px;
+}
+.r {
+    border: solid 1px #aaa;
+    text-align:right;
+}
+.h{
+    height:20px;
+    width:20px;
+}
+.aligns{
+    text-align:right;
+}
+.divStyle{
+    background-color:#eee;
+    padding:30px 10px;
+}
+form{
+    padding:10px;
+}
+.more{
+    color:cadetblue;
+    font-size:15px;
+    text-align:left;
+}
+.lableAlign{
+    font-size:15px;
+    padding-right:5%;
+}
+.h4Style{
+    color:cadetblue;
+    padding-right:2%;
+}
+
+.theDropdown {
+    width: 180px;
+}

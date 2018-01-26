@@ -1,0 +1,190 @@
+﻿@model IEnumerable<LinkForEmployment.Models.job>
+@{
+    ViewBag.Title = "الصفحة الرئيسية";
+}
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+<meta name="author" content="FREEHTML5.CO" />
+
+<link href="~/Content/animate.css" rel="stylesheet" />
+<link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+<link href="~/Content/owl.theme.default.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/main.js"></script>
+
+
+<div style="margin-top:-60px;">
+
+    <div class="backgroundimg">
+        <div class="col-md-12 pattern height-resize">
+            @using (Html.BeginForm("Search", "HomeJobSeeker", FormMethod.Post))
+            {
+                <div class="searchDiv col-xs-offset-2 col-xs-8">
+                    <input type="text" class="col-xs-offset-2 col-xs-7" name="searchName" id="searchName" placeholder="البحث عن وظيفة" style="font-size:16px; font-weight:bold;" />
+                    <div class="iIco col-xs-1">
+                        <i class="searchico col-xs-1 fa fa-search"></i>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+
+    <div>
+        <h1>نسبة اكتمال السيرة الذاتية</h1>
+    </div>
+
+    @*الوظائف المستهدفة*@
+    <section id="fh5co-team" data-section="team" class="animated">
+        <div class="fh5co-team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center" style="margin-bottom:70px;">
+                        <h2 class="to-animate fadeIn animated">
+                            الوظائف المستهدفة
+                        </h2>
+                    </div>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-md-3">
+                            <div class="team-box text-center to-animate-2 fadeInUp animated">
+                                <div class="user"><img class="img-reponsive" src="~/images/10.jpg" alt="صورة الوظيفة"></div>
+                                <h3>اسم الشركة</h3>
+                                <p>اسم الوظيفة</p>
+                                <p>بيانات مختصرة عن الوظيفة</p>
+
+                                <div class="col-md-6">
+                                    @Html.ActionLink("تقدم", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.ActionLink("حفظ", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                    @*<div class="col-md-3">
+                            <div class="team-box text-center to-animate-2 fadeInUp animated">
+                                <div class="user"><img class="img-reponsive" src="~/images/10.jpg" alt="Roger Garfield"></div>
+                                <h3>اسم الشركة</h3>
+                                <span class="position">اسم الوظيفة</span>
+                                <p>بيانات مختصرة عن الوظيفة</p>
+                                <div class="col-md-6">
+                                    <input type="submit" value="تقدم" class="btn btn-primary" />
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="submit" value="حفظ" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>*@
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    @*وظائف ذات علاقة*@
+    <section id="fh5co-team" data-section="team" class="animated">
+        <div class="fh5co-team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center" style="margin-bottom:70px;">
+                        <h2 class="to-animate fadeIn animated">
+                            وظائف ذات علاقة
+                        </h2>
+                    </div>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-md-3">
+                            <div class="team-box text-center to-animate-2 fadeInUp animated">
+                                <div class="user"><img class="img-reponsive" src="~/images/10.jpg" alt="صورة الوظيفة"></div>
+                                <h3>اسم الشركة</h3>
+                                <p>اسم الوظيفة</p>
+                                <p>بيانات مختصرة عن الوظيفة</p>
+
+                                <div class="col-md-6">
+                                    @Html.ActionLink("تقدم", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.ActionLink("حفظ", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                    @*<div class="col-md-3">
+                            <div class="team-box text-center to-animate-2 fadeInUp animated">
+                                <div class="user"><img class="img-reponsive" src="~/images/10.jpg" alt="Roger Garfield"></div>
+                                <h3>اسم الشركة</h3>
+                                <span class="position">اسم الوظيفة</span>
+                                <p>بيانات مختصرة عن الوظيفة</p>
+                                <div class="col-md-6">
+                                    <input type="submit" value="تقدم" class="btn btn-primary" />
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="submit" value="حفظ" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>*@
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @*كيف يساعدك الموقع في التوظيف*@
+    <section id="works" class="center-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-heading text-center">
+                    <h2 class="to-animate fadeIn animated" style="margin-bottom:50px;">
+                        كيف يساعدك موقع لينك في التوظيف
+                    </h2>
+                </div>
+                <div class="works_content text-center">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="single_works_text wow fadeInLeft" data-wow-duration=".5s" style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInLeft;">
+                            <i class="fa fa-crop"></i><h3>
+                                انشاء سيرة ذاتية
+                            </h3><p>
+                                انشاء سيرة ذاتية مكتملة وبالطرق المتعبة في تحسين السيرة الذاتية تزيد من نسبة ظهور سيرتك الذاتية لدى مزودوا الوظيفة
+                            </p>
+                        </div>
+                    </div><div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="single_works_text wow fadeInLeft" data-wow-duration=".8s" style="visibility: visible; animation-duration: 0.8s; animation-name: fadeInLeft;">
+                            <i class="fa fa-cube"></i><h3>
+                                البحث عن وظائف
+                            </h3><p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at nibh orci.
+                            </p>
+                        </div>
+                    </div><div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="single_works_text wow fadeInLeft" data-wow-duration="1.2s" style="visibility: visible; animation-duration: 1.2s; animation-name: fadeInLeft;">
+                            <i class="fa fa-magic"></i><h3>
+                                المنح
+                            </h3><p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at nibh orci.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+

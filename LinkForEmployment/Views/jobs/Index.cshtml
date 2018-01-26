@@ -1,0 +1,230 @@
+﻿@model IEnumerable<LinkForEmployment.Models.job>
+
+@{
+    ViewBag.Title = "الصفحة الرئيسية";
+    @Html.Partial("_EmployerNavbar")
+}
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+<meta name="author" content="FREEHTML5.CO" />
+
+<link href="~/Content/animate.css" rel="stylesheet" />
+<link href="~/Content/owl.carousel.min.css" rel="stylesheet" />
+<link href="~/Content/owl.theme.default.min.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/main.js"></script>
+
+
+<div style="margin-top:-60px;">
+
+    <div class="backgroundimg">
+        <div class="col-md-12 pattern height-resize">
+            @using (Html.BeginForm("Search", "jobs", FormMethod.Post))
+            {
+                <div class="searchDiv col-xs-offset-2 col-xs-8">
+                    <input type="text" class="col-xs-offset-2 col-xs-7" name="searchName" id="searchName" placeholder="البحث عن سيرة ذاتية" style="font-size:16px; font-weight:bold;" />
+                    <div class="iIco col-xs-1">
+                        <i class="searchico col-xs-1 fa fa-search"></i>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+
+    <div style="height:100px; width:100%;">
+        <h1 class="text-center"> @Html.ActionLink("نشر وظيفة جديدة", "Create")</h1>
+    </div>
+
+
+    @*وظائف قمت بنشرها*@
+
+    <section id="fh5co-team" data-section="team" class="animated">
+        <div class="fh5co-team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 section-heading text-center" style="margin-bottom:70px;">
+                        <h2 class="to-animate fadeIn animated">
+                            وظائف قمت بنشرها
+                        </h2>
+                    </div>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="col-md-3">
+                            <div class="team-box text-center to-animate-2 fadeInUp animated">
+                                <div class="user"><img class="img-reponsive" src="~/images/10.jpg" alt="صورة الوظيفة"></div>
+                                <h3>@Html.DisplayFor(modelItem => item.jobName)</h3>
+
+                                <p>مدة عقد العمل: @Html.DisplayFor(modelItem => item.DurationOfEmploymentContract)</p>
+                                <p>عدد ساعات العمل: @Html.DisplayFor(modelItem => item.WorkingHours) ساعات</p>
+                                <p>المدة المتاحة للتقدم: @Html.DisplayFor(modelItem => item.DurationAvailableForApply) @Html.DisplayFor(modelItem => item.applayPeriod)</p>
+
+                                <span class="position">عدد المتقدمين</span>
+
+                                <div>
+                                    @Html.ActionLink("تفاصيل", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    @*كيف يساعدك الموقع في التوظيف*@
+    <section id="works" class="center-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-heading text-center">
+                    <h2 class="to-animate fadeIn animated" style="margin-bottom:50px;">
+                        كيف يساعدك موقع لينك في التوظيف
+                    </h2>
+                </div>
+                <div class="works_content text-center">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="single_works_text wow fadeInLeft" data-wow-duration=".5s" style="visibility: visible; animation-duration: 0.5s; animation-name: fadeInLeft;">
+                            <i class="fa fa-crop"></i><h3>
+                                اعلن عن وظيفتك
+                            </h3><p>
+                                تلقي وادارة طلبات المرشحين المهتمين بالفعل لديك وووو
+                            </p>
+                        </div>
+                    </div><div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="single_works_text wow fadeInLeft" data-wow-duration=".8s" style="visibility: visible; animation-duration: 0.8s; animation-name: fadeInLeft;">
+                            <i class="fa fa-cube"></i><h3>
+                                البحث عن السير الذاتية
+                            </h3><p>
+                                البحث ضمن اكثر من خمسة الف سيرة ذاتية من كافة المجالات والمستويات المهنية والجنسيات
+                            </p>
+                        </div>
+                    </div><div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="single_works_text wow fadeInLeft" data-wow-duration="1.2s" style="visibility: visible; animation-duration: 1.2s; animation-name: fadeInLeft;">
+                            <i class="fa fa-magic"></i><h3>
+                                عنوان
+                            </h3><p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at nibh orci.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+@*
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.jobName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jobDuration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.timeNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jobsalary)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.currency)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.city)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.street)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberDuration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.applayDuration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.applayConditions)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.jobDescrib)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserID)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jobName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jobDuration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.timeNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jobsalary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.currency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.city)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.street)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberDuration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.applayDuration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.applayConditions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.jobDescrib)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserID)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>*@

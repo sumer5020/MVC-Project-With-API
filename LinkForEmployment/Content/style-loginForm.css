@@ -1,0 +1,186 @@
+.vid-container{
+    overflow:hidden;
+}
+body *{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.bgvid.back {
+  position: fixed; right: 0; bottom: 0;
+  min-width: 100%; min-height: 100%;
+  width: auto; height: auto; z-index: -100;
+}
+.inner {
+  position: absolute;
+}
+.inner-container{
+  width:400px;
+  height:470px;
+  position:absolute;
+  top:calc(50vh - 200px);
+  left:calc(50vw - 200px);
+  overflow:hidden;
+}
+.bgvid.inner{
+  top:calc(-50vh + 200px);
+  left:calc(-50vw + 200px);
+  filter: url("data:image/svg+xml;utf9,<svg%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'><filter%20id='blur'><feGaussianBlur%20stdDeviation='10'%20/></filter></svg>#blur");
+  -webkit-filter:blur(10px);
+  -ms-filter: blur(10px);
+  -o-filter: blur(10px);
+  filter:blur(10px);
+}
+.box{
+ /* position:absolute;
+  height:100%;
+  width:100%;
+  font-family:Helvetica;
+  color:#fff;
+  background:rgba(0,0,0,0.1);
+  padding:30px 0px;
+  border-radius:20px;
+  border:2px solid #3d3675;*/
+     position: absolute;
+    height: 100%;
+    width: 100%;
+    font-family: Helvetica;
+    color: #f7f2f2;
+    background: rgba(0, 0, 0, 0.63);
+    padding: 30px 0px;
+    border-radius: 20px;
+    border: 2px solid #002637;
+
+}
+
+.box h1{
+  text-align:center;
+  margin:30px 0;
+  font-size:30px;
+}
+.box input{
+ /*display:block;
+  width:300px;
+  margin:20px auto;
+  padding:15px;
+  background:rgba(0,0,0,0.2);
+  color:#fff;
+  border:0;*/ 
+     display: block;
+    width: 300px;
+    margin: 20px auto;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.53);
+    color: #fff;
+    border: 0;
+}
+.box input:focus,.box input:active,.box button:focus,.box button:active{
+  outline:none;
+}
+.box button{
+  background:#742ECC;
+  border:0;
+  color:#fff;
+  padding:10px;
+  font-size:20px;
+  width:330px;
+  margin:20px auto;
+  display:block;
+  cursor:pointer;
+}
+.box button:active{
+  background:#27ae60;
+}
+.box p{
+  font-size:14px;
+  text-align:center;
+}
+.box p span{
+  cursor:pointer;
+  color:#666;
+}
+#titleLogin,#labelUsername,#labelPass,#btnLogin,#labelHent
+{
+ text-align:center;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+#btnLogin{
+    /*width:150px;
+    background:#3d3675;
+    border-radius:10px;*/
+    
+        width: 170px;
+    background: #dddddd;
+    border-radius: 10px;
+    border: 1px dashed white;
+    color: black;
+    font-size: 17px;
+}
+#titleLogin{
+      /*color:#3d3675;*/  
+            color: #f8fafb;
+
+}
+#rememberMe
+{
+    margin-right:-290px;
+    padding-top:0px; 
+    font-size:15px;
+}
+#rememberWord
+{
+    margin-right:-130px; 
+    margin-top:0px; 
+    color: #f0f0f5; 
+    font-weight:700;
+}
+#checkit
+{
+    margin-right:0px; 
+    display:inline; 
+    margin-top:0px; 
+    background:red;
+}
+/*----------------------------------- styles for Content of Home Page -----------------------------*/
+.container-imgs
+{
+   text-align:center;
+   padding-right:20px;
+
+}
+.workImgs
+{
+    box-sizing:border-box;
+    width:270px;
+   height:300px;
+   margin-left:5px;
+      margin-bottom:5px;
+
+   
+   text-align:center;
+}
+.workImgs p
+{
+position:absolute;
+bottom:0px;
+   
+}
+
+/*------------------------Styles for Search Domains -------------------------*/
+#search-according-domain
+{
+    margin-top:10px;
+}
+.searchImgs
+{
+    box-sizing:border-box;
+    width:270px;
+   height:270px;
+   margin-left:5px;
+   margin-bottom:5px;
+   
+   text-align:center;
+}
+.TitleBoxs{
+     color:#3d3675; 
+     text-align:center; 
+     margin-bottom:17px;
+}

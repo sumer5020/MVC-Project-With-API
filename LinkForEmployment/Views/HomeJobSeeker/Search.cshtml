@@ -1,0 +1,66 @@
+﻿@model IEnumerable<LinkForEmployment.Models.job>
+
+@{
+    ViewBag.Title = "نتائج البحث";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="fh5co-team" data-section="team" class="animated">
+    <div class="fh5co-team">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 section-heading text-center" style="margin-bottom:70px;">
+                    <h2 class="to-animate fadeIn animated">
+                        نتائج البحث
+                    </h2>
+                </div>
+
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-md-3">
+                        <div class="team-box text-center to-animate-2 fadeInUp animated">
+                            <div class="user"><img class="img-reponsive" src="~/images/10.jpg" alt="صورة الشركة"></div>
+                            <h3>اسم الشركة: @Html.DisplayFor(modelItem => item.jobName)</h3>
+                            <p>اسم الوظيفة: @Html.DisplayFor(modelItem => item.jobName)</p>
+                            <p>مدة عقد العمل: @Html.DisplayFor(modelItem => item.DurationOfEmploymentContract)</p>
+                            <p>عدد ساعات العمل: @Html.DisplayFor(modelItem => item.WorkingHours) ساعات</p>
+                            <p>المدة المتاحة للتقدم: @Html.DisplayFor(modelItem => item.DurationAvailableForApply) @Html.DisplayFor(modelItem => item.applayPeriod)</p>
+                            <p>
+                                @Html.ActionLink("المزيد", "SearchDetails", new { id = item.Id })
+                                @*< a href = "~/Views/HomeJobSeeker/SearchDetails.cshtml" > المزيد </ a >*@
+                            </p>
+                            @*<p>شروط التقدم: @Html.DisplayFor(modelItem => item.applayConditions)</p>
+                                <p>وصف الوظيفة: @Html.DisplayFor(modelItem => item.jobDescrib)</p>*@
+
+                            <div class="col-md-6">
+                                @Html.ActionLink("تقدم", "SearchDetails", new { id = item.Id }, new { @class = "btn btn-primary" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.ActionLink("حفظ", "Details", new { id = item.Id }, new { @class = "btn btn-primary" })
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+                @*<div class="col-md-3">
+                        <div class="team-box text-center to-animate-2 fadeInUp animated">
+                            <div class="user"><img class="img-reponsive" src="~/images/10.jpg" alt="Roger Garfield"></div>
+                            <h3>اسم الشركة</h3>
+                            <span class="position">اسم الوظيفة</span>
+                            <p>بيانات مختصرة عن الوظيفة</p>
+                            <div class="col-md-6">
+                                <input type="submit" value="تقدم" class="btn btn-primary" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="submit" value="حفظ" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>*@
+
+            </div>
+        </div>
+    </div>
+</section>

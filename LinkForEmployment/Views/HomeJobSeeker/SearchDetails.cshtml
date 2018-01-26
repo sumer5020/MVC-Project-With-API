@@ -1,0 +1,135 @@
+﻿@model LinkForEmployment.Models.job
+
+@{
+    ViewBag.Title = "التفاصيل";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>التفاصيل</h2>
+<div>
+    @{
+        if (ViewBag.Result != null)
+        {
+            <h3>@ViewBag.Result</h3>
+        }
+    }
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.jobName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DurationOfEmploymentContract)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DurationOfEmploymentContract)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkingHours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkingHours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobsalary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobsalary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.currency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.currency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalaryPaymentPeriod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalaryPaymentPeriod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.street)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.street)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DurationAvailableForApply)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DurationAvailableForApply)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.applayPeriod)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.applayPeriod)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.applayConditions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.applayConditions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.jobDescrib)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.jobDescrib)
+        </dd>
+
+    </dl>
+</div>
+<div class="col-md-1" style="margin-right:4%; width:60px; font-size:18px;">
+    @Html.ActionLink("تقدم", "Apply", new { id = Model.Id }, new { @class = "btn btn-primary" })
+</div>
+<div class="col-md-1" style="width:70px; font-size:18px;">
+    @Html.ActionLink("حفظ", "Details", new { id = Model.Id }, new { @class = "btn btn-primary" })
+</div>
+<div class="col-md-2" style="margin-top:0.5%;  font-size:16px;">
+    <a href="javascript:history.back()">العودة الى الصفحة السابقة</a>
+</div>

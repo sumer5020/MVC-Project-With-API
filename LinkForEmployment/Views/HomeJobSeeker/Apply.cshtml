@@ -1,0 +1,43 @@
+﻿@model LinkForEmployment.Models.ApplyForJob
+
+@{
+    ViewBag.Title = "التقدم الى الوظيفة";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="margin-top:20px;">
+        <h4>التقدم الى الوظيفة</h4>
+        <hr />
+        <div>
+            @{
+                if (ViewBag.Result != null)
+                {
+                    <h3>@ViewBag.Result</h3>
+                }
+            }
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 lableAlign">هل تريد التقدم الى الوظيفة</label>
+            <div class="col-md-6">
+                <label class="col-md-1 lableAlign">نعم</label>
+                <input class="col-md-2 h" type="radio" name="isApply" value="Yes" checked>
+                <label class="col-md-1 lableAlign">لا</label>
+                <input class="col-md-2 h" type="radio" name="isApply" value="No">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="تأكيد" class="btn btn-primary" style="font-size:18px;" />
+            </div>
+        </div>
+    </div>
+                }
+
+<div style="margin-bottom:140px;">
+    @Html.ActionLink("العودة الى الصفحة الرئيسية", "Index")
+</div>
+

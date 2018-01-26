@@ -1,0 +1,94 @@
+﻿@model IEnumerable<jobPortal.Models.EmployerInfo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.compName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compWorkName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compPhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compZipCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.webSite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compLogo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.receiveApplay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reportAndUpdate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.compName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.compLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.compSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.compWorkName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.compPhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.compZipCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.webSite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.compLogo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.receiveApplay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reportAndUpdate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,41 @@
+﻿@model LinkForEmployment.Models.ApplyForJob
+
+@{
+    ViewBag.Title = "حذف وظيفة";
+}
+
+<h2>الحذف</h2>
+
+<h3>هل انت متأكد من حذف هذا؟</h3>
+<div>
+    <h4>التقدم الى الوظيفة</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            اسم الوظيفة
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.job.jobName)
+        </dd>
+
+        <dt>
+            تاريخ التقدم
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplyDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("العودة الى القائمة", "Index")
+        </div>
+    }
+</div>

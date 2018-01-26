@@ -1,0 +1,32 @@
+﻿@using LinkForEmployment.Models;
+@model LoginViewModel
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+ <!--login Form -->
+    <div class="vid-container">
+        <div class="inner-container">
+            <div class="box">
+                <h1 id="titleLogin">تسجيل الدخول</h1>
+                <p style="color:red;">@ViewBag.message</p>
+                <input id="labelUsername" type="text" placeholder="البريد الألكتروني" name="Email" />
+                <input id="labelPass" type="password" placeholder="كلمة المرور" name="Password" />
+                <div id="rememberMe" class="text-center">
+                    <span>
+                        <!-- <input type="checkbox" id="checkit" name="RememberMe"/> -->
+                        <input id="checkit" name="RememberMe" type="checkbox" value="true" />
+                        <span id="rememberWord">تذكرني ؟</span>
+                    </span>
+                </div>
+                <input type="submit" id="btnLogin" value="دخول" />
+
+            </div>
+
+        </div>
+    </div>
+    <!--End login Form-->
+
+    <script src="~/Scripts/OurJQuery.js"></script>
+}

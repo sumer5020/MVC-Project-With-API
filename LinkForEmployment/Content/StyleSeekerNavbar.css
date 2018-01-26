@@ -1,0 +1,67 @@
+﻿.list-Items
+{
+    width:210px;
+}
+.list-Items a
+{
+    margin-bottom:5px;
+    cursor:pointer;
+    text-decoration:none;
+    display:block;
+}
+
+.list-Items a:hover
+{
+      font-size:15px;
+ 
+
+}
+.dropdownMenu
+{
+        background:white;
+}
+/*.navbar-Item a:hover
+{
+text-decoration:underline;
+color:red;
+}*/
+.navbar-Item{
+    font-weight:bolder;
+    color:red;
+}
+.navbar-inverse .navbar-nav > li > a{
+    color:white;
+}
+.navbar-inverse .navbar-nav > li > a:hover{
+     
+
+    color:#40dc52;
+}
+#loggedinUser
+{
+    width:200px;
+}
+#NotiIcon
+{
+ 
+}
+.notification-on{
+    position: fixed;
+    color: white;
+    border-radius:5px;
+    border:1px solid red;
+    background:red;
+   
+   /* width:40px;*/
+   min-width:19px;
+   text-align:center;
+    font-weight: bold;
+    margin-top:-5px;
+   
+}
+#notify
+{
+position:relative;
+right:150px;
+}
+

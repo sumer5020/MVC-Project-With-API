@@ -1,0 +1,94 @@
+﻿<link href="~/Content/StyleSeekerNavbar.css" rel="stylesheet" />
+<style>
+    .list-Items a:hover
+{
+      font-size:14px;
+ 
+
+}
+    .NotifyContenet
+    {
+        font-size:10px;
+        color:black;
+    }
+    .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #ffffff;
+     background-color:none; 
+}
+</style>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">
+                <img class="logo-img" src="~/images/Job-Searh-icon-Converted1.png" />
+            </a>
+        </div>
+        <div class="navbar-collapse collapse nav-font">
+            <ul class="nav navbar-nav navbar-text">
+                <li class="navbar-Items">
+                    <a href="~/Home/index" class="navbar-Item">
+                        الرئيسية
+                    </a>
+                </li>
+                <li class="navbar-Items">
+                    <a href="#" class="navbar-Item">
+                        وظائف قمت بنشرها
+                    </a>
+                </li>
+
+                <li class="navbar-Items">
+                    <a href="#" class="navbar-Item">
+                        طلبات التقدم
+                    </a>
+                </li>
+                <li class="navbar-Items">
+                    <a href="#" class="navbar-Item">
+                        كيف تستخدم موقع لينك 
+                    </a>
+                    
+                </li>
+                <li class="dropdown navbar-Item" id="notify">
+                    <!--Write Here your Condations and Number of Notification-->
+                  
+                    <div class="notification-on">
+                        3    <!--For Example 10 Notifications-->
+                    </div>
+                    <a  id="NotiIcon" class="glyphicon glyphicon-bell dropdown-toggle navbar-Item" data-toggle="dropdown" href="#"></a>
+                    <ul class="dropdown-menu dropdownMenu">
+                        <li>
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-12 text-center list-Items">
+                                        <a>
+                                        <div style="width:100%;">
+                                           <div class="col-ms-2">
+                                               <img src="~/images/1.jpg" style="height:30px; width:30px; border-radius:50%; border:1px solid red;" />
+                                           </div>
+                                       
+<div class="col-ms-10">
+    <span>العنوان </span>
+    <span class="NotifyContenet">محتوى التنبية او نبذه عن التنبية</span>
+</div>
+                                        </div>
+                                         </a> <hr />
+                                        <a>الوظائف المستهدفة</a><hr />
+                                        <a>وظائف ذات علاقة</a><hr />
+                                        <a>احدث الوظائف</a><hr />
+                                        <a>كيف تبحث عن الوظائف</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>

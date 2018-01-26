@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "اتمام التسجيل";
+}
+@using (Html.BeginForm("index", "userRole", FormMethod.Post , new {role = "form" }))
+{
+<div class="row">
+    <div class="col-sm-4">
+        <div class="text-center">
+            <div class="">
+                <img src="~/images/hi.png" alt="مرحبا بك" />
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="text-right top-spaser">
+            <h3>تهانينا</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat eget diam sit amet molestie.Curabitur.
+                ut ipsum bibendum tortor lacinia fermentum nec joeıa.Mauris at augue libero. Fusce posuere, sapien nec poır.Uaee augsuada sed mauris in tincidunt...
+            </p>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="spacer">
+    <div class="row">
+        <div>
+            <form action="" name="userRuleForm">
+                <div class="col-sm-6 myTekit">
+                    <div class="text-center">
+<div class="row">
+    <h3>طالب وضيفه</h3>
+    <p class="pad">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat eget diam sit amet molestie.Curabitur.
+        ut ipsum bibendum tortor lacinia fermentum nec joeıa.Mauris at augue libero. Fusce posuere, sapien nec poır.Uaee augsuada sed mauris in tincidunt...
+    </p>
+</div>
+<div class="row">
+    <!--<a href="#" class="btn btn-primary myBtn">job seeker</a>-->
+    <input class="btn btn-primary myBtn" name="userType" type="submit" value="باحث عن وظيفة" />
+</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 myTekit">
+                    <div class="text-center">
+<div class="row">
+    <h3>مزود وضيفه</h3>
+    <p class="pad">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent feugiat eget diam sit amet molestie.Curabitur.
+        ut ipsum bibendum tortor lacinia fermentum nec joeıa.Mauris at augue libero. Fusce posuere, sapien nec poır.Uaee augsuada sed mauris in tincidunt...
+    </p>
+</div>
+<div class="row">
+    <input class="btn btn-primary myBtn" name="userType" type="submit" value="مزود وظائف" />
+</div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+}

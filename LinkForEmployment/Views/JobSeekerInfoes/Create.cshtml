@@ -1,0 +1,898 @@
+﻿@using jobPortal.Models;
+@using Microsoft.AspNet.Identity
+@model jobPortal.ViewModelJobSeeker.JobSeekerMore
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    //$(function(){
+
+    var skillcount = 0;
+    var voluntaryWorkcount = 0;
+    var examcount = 0;
+    var corcecount = 0;
+    var acadimiccount = 0;
+    var workcount = 0;
+    var nationalitycount = 0;
+    var compPhone = 0;
+    var webSite = 0;
+    //==============================================================
+    var scriptState = 0;
+    //==============================================================
+
+    function skillAdd() {
+        if (skillcount < 9) {
+            $('<div class="form-group"><div class="col-md-offset-2 col-md-6"><input class="col-md-6" type="text" name="Skills[' + skillcount + '].skillName" id="skill[' + skillcount + ']" value=""></div></div>').insertBefore("#skillsMore");
+            ++skillcount;
+
+        }
+    }
+
+    function voluntaryWorkAdd() {
+        if (voluntaryWorkcount < 9) {
+
+            $('<div class="form-group"><label class="col-md-2 lableAlign">العمل التطوعي</label><div class="col-md-6"><input class="col-md-6" type="text" name="MoreVoluntaryWorkDetials[' + voluntaryWorkcount + '].voluntaryWorkTitle" id="voluntaryWorkTitle[' + voluntaryWorkcount + ']" value=""></div></div><div class="form-group"><label class="col-md-2 lableAlign">تاريخ البدء</label><div class="col-md-6"><input id="voluntaryWorkStartDate[' + voluntaryWorkcount + ']" name="MoreVoluntaryWorkDetials[' + voluntaryWorkcount + '].voluntaryWorkStartDate" class="col-md-6 n" type="date" placeholder="اليوم/الشهر/السنة"></div></div><div class="form-group"><label class="col-md-2 lableAlign">تاريخ الانتهاء</label><div class="col-md-6"><input id="voluntaryWorkEndDate[' + voluntaryWorkcount + ']" name="MoreVoluntaryWorkDetials[' + voluntaryWorkcount + '].voluntaryWorkEndDate" class="col-md-6 n" type="date" placeholder="اليوم/الشهر/السنة"></div></div><div class="form-group"><label class="col-md-2 lableAlign">وصف العمل التطوعي</label><div class="col-md-6"><textarea class="aligns m" name="MoreVoluntaryWorkDetials[' + voluntaryWorkcount + '].voluntaryWorkDescribe" id="voluntaryWorkDescribe[' + voluntaryWorkcount + ']" rows="4" cols="50"></textarea></div></div><div class="form-group"><label class="col-md-2 lableAlign">شهادة العمل التطوعي - إن وجدت</label><div class="col-md-6"><input class="col-md-6 r" type="file" name="voluntaryCertificate[' + voluntaryWorkcount + ']" id="voluntaryCertificate[' + voluntaryWorkcount + ']" value=""></div></div>').insertBefore("#voluntaryWorkMore");
+            ++voluntaryWorkcount;
+
+        }
+    }
+
+    function examAdd() {
+        if (examcount < 9) {
+
+            $('<div class="form-group"><label class="col-md-2 lableAlign">اسم الشهادة</label><div class="col-md-6"><select name="MoreExamDetials[' + examcount + '].examTitle" id="examTitle[' + examcount + ']" class="col-md-6 m"><option value="" disabled selected>-- اختيار --</option><option value="tofel">توفل</option><option value="elets">ايليت</option><option value="ic3">الرخصة الدولية لقيادة الحاسوب</option><option value="cesco">سيسكو</option></select></div></div><div class="form-group"><label class="col-md-2 lableAlign">صورة من الشهادة</label><div class="col-md-6"><input class="col-md-6 r" type="file" name="examCertificate[' + examcount + ']" id="examCertificate[' + examcount + ']" value=""></div></div>').insertBefore("#examMore");
+            ++examcount;
+
+        }
+    }
+
+    function corceAdd() {
+        if (corcecount < 19) {
+
+            $('<div class="divStyle"><div class="form-group"><label class="col-md-2 lableAlign">اسم الدورة</label><div class="col-md-6"><input class="col-md-6" type="text" name="MoreCourseDetials[' + corcecount + '].courseTitle" id="corceTitle[' + corcecount + ']" value=""></div></div><div class="form-group"><label class="col-md-2 lableAlign">الشهادة</label><div class="col-md-6"><input class="col-md-6 r" type="file" name="courseCertificate[' + corcecount + ']" id="corceCertificate[' + corcecount + ']" value=""></div></div>').insertBefore("#corceMore");
+            ++corcecount;
+
+        }
+    }
+    function acadimicAdd() {
+        if (acadimiccount < 5) {
+
+            $('<div class="divStyle"><div class="form-group"><label class="col-md-2 lableAlign">المؤسسة التعليمية</label><div class="col-md-6"><input class="col-md-6" type="text" name="MoreAcadimicDetials[' + acadimiccount + '].acadimicName" id="acadimicName[' + acadimiccount + ']" value=""></div></div><div class="form-group"><label class="col-md-2 lableAlign">المؤهل</label><div class="col-md-6"><select name="MoreAcadimicDetials[' + acadimiccount + '].acadimicType" id="acadimicType[' + acadimiccount + ']" class="col-md-6 m"><option value="" disabled selected>-- اختيار --</option><option value="female">ثانوية</option><option value="male">بكالوريوس</option><option value="female">ماجستير</option><option value="female">دكتوراه</option></select></div></div><div class="form-group"><label class="col-md-2 lableAlign">القسم / التخصص</label><div class="col-md-6"><input class="col-md-6" type="text" name="MoreAcadimicDetials[' + acadimiccount + '].acadimicTitle" id="acadimicTitle[' + acadimiccount + ']" value=""></div></div><div class="form-group"><label class="col-md-2 lableAlign">تاريخ الحصول على المؤهل</label><div class="col-md-6"><input name="MoreAcadimicDetials[' + acadimiccount + '].acadimicEndDate" id="acadimicEndDate[' + acadimiccount + ']" class="col-md-6 n" type="date"  placeholder="اليوم/الشهر/السنة" ></div></div><div class="form-group"><label class="col-md-2 lableAlign">الدولة التي حصلت منها على المؤهل</label><div class="col-md-6"><select name="MoreAcadimicDetials[' + acadimiccount + '].acadimicCountry" class="col-md-3 m"><option value="" disabled selected>-- اختيار --</option>@foreach (var item in (List<Country>)ViewData["countries_"]){<option value="@item.CountryValue">@item.CountryName</option>}</select><input class="col-md-3" type="text" name="MoreAcadimicDetials[' + acadimiccount + '].acadimicCity" id="acadimicCity[' + acadimiccount + ']" value="" placeholder="المدينة"></div></div><div class="form-group"><label class="col-md-2 lableAlign">صورة من المؤهل</label><div class="col-md-6"><input class="col-md-6 r" type="file" name="acadimicCertificate[' + acadimiccount + ']" id="acadimicCertificate[' + acadimiccount + ']" value=""></div></div>').insertBefore("#acadimicMore");
+            ++acadimiccount;
+        }
+    }
+
+    function workAdd() {
+        if (workcount < 3) {
+            $('<div class="form-group"><label class="col-md-2 lableAlign">تاريخ بدء العمل</label><div class="col-md-6"><input id="workStartDate[' + workcount + ']" name="MoreWorkDetails[' + workcount + '].workStartDate" class="col-md-6 n" type="date" placeholder="اليوم/الشهر/السنة"></div></div><div class="form-group"><label class="col-md-2 lableAlign">تاريخ ترك العمل</label><div class="col-md-6"><input id="workEndDate[' + workcount + ']" name="MoreWorkDetails[' + workcount + '].workEndDate" class="col-md-6 n" type="date" placeholder="اليوم/الشهر/السنة"></div></div><div class="form-group"><label class="col-md-2 lableAlign">الموقع</label><div class="col-md-6"><select name="MoreWorkDetails[' + workcount + '].workLocation" id="workLocation[' + workcount + ']" class="col-md-6 m"><option value="" disabled selected>-- اختيار --</option>@foreach(var item in (List<Country>)ViewData["countries_"]) {<option value="@item.CountryValue">@item.CountryName</option>}</select></div></div><div class="form-group"><label class="col-md-2 lableAlign">اسم الشركه التي عملت لديها</label><div class="col-md-6"><input class="col-md-6" type="text" name="MoreWorkDetails[' + workcount + '].compName" id="compName[' + workcount + ']" value=""></div></div><div class="form-group"><label class="col-md-2 lableAlign">طبيعة عمل الشركة</label><div class="col-md-6"><input class="col-md-6" type="text" name="MoreWorkDetails[' + workcount + '].compWork" id="compWork[' + workcount + ']" value=""></div></div><div class="form-group"><label class="col-md-2 lableAlign">الدور الوضيفي</label><div class="col-md-6"><select name="MoreWorkDetails[' + workcount + '].compField" id="compField[' + workcount + ']" class="col-md-6 m"><option value="" disabled selected>-- اختيار --</option><option value="single">الادارة</option><option value="marid">المحاسبة و التسويق</option><option value="other">الموارد البشرية</option></select></div></div><div class="form-group"><label class="col-md-2 lableAlign">المسمى / المنصب الوضيفي</label><div class="col-md-6"><input class="col-md-6" type="text" name="MoreWorkDetails[' + workcount + '].workTitle" id="workTitle[' + workcount + ']" value=""></div></div><div class="form-group"><label class="col-md-2 lableAlign">وصف العمل</label><div class="col-md-6"><textarea class="aligns m" name="MoreWorkDetails[' + workcount + '].workDescribe" id="workDescribe[' + workcount + ']" rows="4" cols="50"></textarea></div></div><div class="form-group"><label class="col-md-2 lableAlign">شهادة الخبرة العملية</label><div class="col-md-6"><input class="col-md-6 r" type="file" name="workCertificate[' + workcount + ']" id="workCertificate[' + workcount + ']" value=""></div></div>').insertBefore("#workMore");
+            ++workcount;
+
+        }
+    }
+    function nationalityAdd() {
+        if (nationalitycount < 3) {
+            $('<div class="form-group"><div class="col-md-offset-2 col-md-6"><select name="nationalitys[' + nationalitycount + '].nationality" id="Nationality[' + nationalitycount + ']" class="col-md-6 m">  <option value="" disabled selected>-- اختيار --</option> @foreach (var item in (List<NationalityGet>)ViewData["nationalities_"]){  <option value="@item.NationalityValue">@item.NationalityName</option>}</select></div></div>').insertBefore("#nationalityMore");
+            ++nationalitycount;
+
+        }
+    }
+
+
+
+</script>
+
+<h2>بيانات المتقدم للوظيفة</h2>
+@using (Html.BeginForm("Create", "JobSeekerInfoes", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+
+    @Html.AntiForgeryToken()
+    <div class="text-right">
+        <div class="alert alert-danger" id="error-div" style="display:none;">
+            <span id="view-error"> </span>
+        </div>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--<form action="#" class="form-horizontal" method="post" role="form">-->
+        <h4 class="h4Style">المعلومات الشخصية &#9899;</h4>
+
+        <div class="divStyle">
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">الاسم الاول</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => Model.firstName, new { @class = "col-md-6", id = "firstName", maxlength = "20", type = "text" })
+                    @Html.ValidationMessageFor(model => Model.firstName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">الاسم الاوسط</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => Model.middleName, new { @class = "col-md-6", type = "text", id = "middleName", value = "Homadi", maxlength = "20" })
+                    @Html.ValidationMessageFor(model => Model.middleName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">الاسم الاخير</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => Model.lastName, new { @class = "col-md-6", type = "text", id = "lastName", maxlength = "20" })
+                    @Html.ValidationMessageFor(model => Model.lastName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">تاريخ الميلاد</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => Model.bornDate, new { @class = "col-md-6 n", placeholder = "اليوم/الشهر/السنة", type = "date", id = "bornDate" })
+                    @Html.ValidationMessageFor(model => Model.bornDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">الجنس</label>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => Model.gender, new List<SelectListItem>
+                  {
+new SelectListItem() {Text = "ذكر", Value="male"},
+new SelectListItem() {Text = "انثى", Value="female"},
+
+                   }, "-- اختيار --", new { @class = "col-md-6 m" })
+                    @*
+                        <option value="male" @(Model.gender == "ذكر" ? "selected" : "")>ذكر</option>
+                        <option value="female" @(Model.gender == "انثى" ? "selected" : "")>انثى</option>
+                    *@
+                    @Html.ValidationMessageFor(model => Model.gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">الصوره الشخصيه</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => Model.personalPhoto, new { @class = "col-xs-6 lableAlign r", type = "file", id = "personalPhoto" })
+                    @Html.ValidationMessageFor(model => Model.personalPhoto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">الجنسية</label>
+
+                @*@for (int i = 0; i < Model.nationalitys.Count; i++)
+                                        {
+                                        <div class="col-md-6">
+                    @Html.DropDownListFor(model => Model.nationalitys[i].nationality, ViewData["Nationalities"] as SelectList, new { @class = "col-md-6 m", id = "Nationality["+i+"]" })
+                    @Html.ValidationMessageFor(model => Model.nationalitys[i].nationality, "", new { @class = "text-danger" })
+                                        </div>
+                                        }*@
+            </div>
+
+            <div class="form-group more" id="nationalityMore">
+                <label class="col-md-3 more" onclick="nationalityAdd()">المزيد +</label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">العنوان</label>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => Model.country, ViewData["countriesList"] as SelectList, new { @class = "col-md-2 m", id = "country" })
+                    @Html.ValidationMessageFor(model => Model.country, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => Model.city, new { @class = "col-md-2", id = "city", value = "Thamar", placeholder = "المدينة", maxlength = "20" })
+                    @Html.ValidationMessageFor(model => Model.city, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => Model.street, new { @class = "col-md-2", id = "street", value = "Thamar", placeholder = "المنطقه/الحي", maxlength = "20" })
+                    @Html.ValidationMessageFor(model => Model.street, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">الحالة الاجتماعيه</label>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => Model.socialStatus, new List<SelectListItem>
+    {
+new SelectListItem() {Text = "اعزب", Value="single"},
+new SelectListItem() {Text = "متزوج", Value="marid"},
+new SelectListItem() {Text = "غير ذلك", Value="other"},
+
+                   }, "-- اختيار --", new { @class = "col-md-6 m", id = "socialStatus" })
+                    @Html.ValidationMessageFor(model => Model.socialStatus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">رقم الهاتف</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => Model.phoneNumber, new { @class = "col-md-4", id = "phoneNumber", value = "770009515", placeholder = "000000000", maxlength = "9" })
+                    @Html.ValidationMessageFor(model => Model.phoneNumber, "", new { @class = "text-danger" })
+
+                    @Html.TextBoxFor(model => Model.countryCode, new { @class = "col-md-2", id = "countryCode", value = "+7721", placeholder = "+967", maxlength = "5" })
+                    @Html.ValidationMessageFor(model => Model.countryCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">البريد الالكتروني</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => Model.Email, new { @class = "col-md-6", id = "Email", value = "Thamar", placeholder = "Example@example.com", maxlength = "20" })
+                    @Html.ValidationMessageFor(model => Model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <!---//=================================================================================-->
+        <h4 class="h4Style">الوضيفة المستهدفة &#9899;</h4>
+
+        <div class="divStyle">
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">القب الوضيفي</label>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => Model.dreamJobTitle, new { @class = "col-md-6", id = "dreamJobTitle", value = "Thamar", placeholder = "مثلا: مهندس", maxlength = "20" })
+                    @Html.ValidationMessageFor(model => Model.dreamJobTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">المجال الوضيفي</label>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => Model.jobField, new List<SelectListItem>
+    {
+new SelectListItem() {Text = "التصنيع", Value="manufacturing"},
+new SelectListItem() {Text = "البناء و التشييد", Value="build and construct"},
+
+                   }, "-- اختيار --", new { @class = "col-md-6 m", id = "jobField" })
+                    @Html.ValidationMessageFor(model => Model.jobField, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">المستوى المهني</label>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => Model.experienceLevels, new List<SelectListItem>
+    {
+new SelectListItem() {Text = "مبتدء", Value="beginner"},
+new SelectListItem() {Text = "متوسط الخبرة", Value="middle"},
+new SelectListItem() {Text = "خبير", Value="expert"},
+
+                   }, "-- اختيار --", new { @class = "col-md-6 m", id = "experienceLevels" })
+                    @Html.ValidationMessageFor(model => Model.experienceLevels, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">مكان الوضيفة المستهدفة</label>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => Model.dreamJobLocation, new List<SelectListItem>
+    {
+new SelectListItem() {Text = "الدوله الي اقيم فيها الان", Value="myCountry"},
+new SelectListItem() {Text = "الدول العربية", Value="arabCountries"},
+new SelectListItem() {Text = "اي دولة", Value="anyCountries"},
+
+                   }, "-- اختيار --", new { @class = "col-md-6 m", id = "dreamJobLocation" })
+                    @Html.ValidationMessageFor(model => Model.dreamJobLocation, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">نظام الوظيفة</label>
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => Model.jobTime, new List<SelectListItem>
+    {
+new SelectListItem() {Text = "دوام كامل", Value="fullTime"},
+new SelectListItem() {Text = "دوام جزئي", Value="partialTime"},
+    }, "-- اختيار --", new { @class = "col-md-6 m" })
+
+                    @Html.ValidationMessageFor(model => Model.jobTime, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <!---//=================================================================================-->
+        <h4 class="h4Style">الخبرة العملية &#9899;</h4>
+
+        <div class="divStyle">
+            <div class="form-group">
+                <label class="col-md-2 lableAlign">هل لديك اي خبرات مهنية؟</label>
+                <div class="col-md-6">
+                    <label class="col-md-1 lableAlign">نعم</label>
+                    <!--<input class="col-md-2 h" type="radio" name="isYouWork" value="true" checked>-->
+                    @Html.RadioButtonFor(model => Model.isYouWork, true, new { @class = "col-md-2 h", id = "isWorkChecked" })
+                    @Html.ValidationMessageFor(model => model.isYouWork, "", new { @class = "text-danger" })
+                    <label class="col-md-1 lableAlign">لا</label>
+                    @Html.RadioButtonFor(model => Model.isYouWork, false, new { @class = "col-md-2 h", @checked = true })
+                    @Html.ValidationMessageFor(model => model.isYouWork, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @*@for(int i=0;i<Model.MoreWorkDetails.Count;i++)
+                                {
+
+
+                                <div class="form-group">
+                                    <label class="col-md-2 lableAlign">تاريخ بدء العمل</label>
+                                    <div class="col-md-6">
+                 @Html.TextBoxFor(model=>Model.MoreWorkDetails[i].workStartDate,new {@class= "col-md-6 n", id = "workStartDate["+i+"]" , type = "date", placeholder = "اليوم/الشهر/السنة" })
+                 @Html.ValidationMessageFor(model => Model.MoreWorkDetails[i].workStartDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 lableAlign">تاريخ ترك العمل</label>
+                                    <div class="col-md-9">
+                @Html.TextBoxFor(model=>Model.MoreWorkDetails[i].workEndDate,new { @class= "col-md-6 n", id = "workEndDate["+i+"]", type = "date" ,placeholder = "اليوم/الشهر/السنة" })
+                @Html.ValidationMessageFor(model => Model.MoreWorkDetails[i].workEndDate, "", new { @class = "text-danger" })
+                <label class="col-md-2 lableAlign">لاازال اعمل حالياً</label>
+                @Html.CheckBoxFor(model=>Model.MoreWorkDetails[i].iWorkNow,new {@class= "col-md-1 h", id = "iWorkNow["+i+"]",value="true" })
+                @Html.ValidationMessageFor(model => Model.MoreWorkDetails[i].iWorkNow, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 lableAlign">الموقع</label>
+                                    <div class="col-md-6">
+                @Html.DropDownListFor(model => Model.MoreWorkDetails[i].workLocation, ViewData["countriesList"] as SelectList)
+                @Html.ValidationMessageFor(model => Model.MoreWorkDetails[i].workLocation, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 lableAlign">اسم الشركه التي عملت لديها</label>
+                                    <div class="col-md-6">
+                @Html.TextBoxFor(model => Model.MoreWorkDetails[i].compName, new { @class = "col-md-6", id = "compName["+i+"]", value = "Thamar", maxlength = "20" })
+                @Html.ValidationMessageFor(model => Model.MoreWorkDetails[i].compName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 lableAlign">طبيعة عمل الشركة</label>
+                                    <div class="col-md-6">
+                @Html.TextBoxFor(model => Model.MoreWorkDetails[i].compWork, new { @class = "col-md-6", id = "compWork["+i+"]" ,value = "Thamar", maxlength = "20" })
+                @Html.ValidationMessageFor(model => Model.MoreWorkDetails[i].compWork, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 lableAlign">الدور الوضيفي</label>
+                                    <div class="col-md-6">
+                @Html.DropDownListFor(model => Model.MoreWorkDetails[i].compField, new List<SelectListItem>
+                    {
+                new SelectListItem() {Text = "الادارة", Value="Aminstration"},
+                new SelectListItem() {Text = "المحاسبة و التسويق", Value="Accounting and Marketing"},
+                new SelectListItem() {Text = "الموارد البشرية", Value="Human Resorce"},
+                    }, "-- اختيار --", new { @class = "col-md-6 m", id = "compField["+i+"]" })
+
+                @Html.ValidationMessageFor(model => Model.MoreWorkDetails[i].compField, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 lableAlign">المسمى / المنصب الوضيفي</label>
+                                    <div class="col-md-6">
+                @Html.TextBoxFor(model => Model.MoreWorkDetails[i].workTitle, new { @class = "col-md-6", id = "workTitle[" + i + "]", value = "Thamar", maxlength = "20" })
+                @Html.ValidationMessageFor(model => Model.MoreWorkDetails[i].workTitle, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-2 lableAlign">وصف العمل</label>
+                                    <div class="col-md-6">
+                @Html.TextAreaFor(model=>Model.MoreWorkDetails[i].workDescribe,new { @class = "aligns m", id = "workDescribe["+i+"]", rows = "4", cols = "50", maxlength = "200" })
+                @Html.ValidationMessageFor(model => model.workDetail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 lableAlign">شهادة الخبرة العملية</label>
+                                    <div class="col-md-6">
+                @Html.TextBoxFor(model=>Model.MoreWorkDetails[i].workCertificate,new { @class = "col-md-6 r" ,type = "file" ,id = "workCertificate["+i+"]" ,value = "" })
+                @Html.ValidationMessageFor(model => Model.MoreWorkDetails[i].workCertificate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                }*@
+            <div class="form-group more" id="workMore">
+                <label class="col-md-3 more" id="WorkCerts" onclick="workAdd()">المزيد +</label>
+            </div>
+
+        </div>
+        <!---//=================================================================================-->
+        <h4 class="h4Style">التعليم &#9899;</h4>
+        @*
+                        <div class="divStyle">
+                            @for (int i = 0; i < Model.MoreAcadimicDetials.Count; i++)
+                            {
+                            <div class="form-group">
+                                <label class="col-md-2 lableAlign">المؤسسة التعليمية</label>
+                                <div class="col-md-6">
+            @Html.TextBoxFor(model=>Model.MoreAcadimicDetials[i].acadimicName,new { @class = "col-md-6" ,id= "acadimicName["+i+"]", value = "Thamar" ,maxlength = "20" })
+            @Html.ValidationMessageFor(model => Model.MoreAcadimicDetials, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 lableAlign">المؤهل</label>
+                                <div class="col-md-6">
+            @Html.DropDownListFor(model => Model.MoreAcadimicDetials[i].acadimicType, new List<SelectListItem>
+                {
+            new SelectListItem() {Text = "ثانوية", Value="High School"},
+            new SelectListItem() {Text = "بكالوريوس", Value="Bacalorios"},
+            new SelectListItem() {Text = "ماجستير", Value="Master"},
+            new SelectListItem() {Text="دكتوراه" , Value="Doctor"}
+                }, "-- اختيار --", new { @class = "col-md-6 m", id = "acadimicType[" + i + "]" })
+            @Html.ValidationMessageFor(model => Model.MoreAcadimicDetials[i].acadimicType, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 lableAlign">القسم / التخصص</label>
+                                <div class="col-md-6">
+                                 @Html.TextBoxFor(model=>Model.MoreAcadimicDetials[i].acadimicTitle,new {@class= "col-md-6", id = "acadimicTitle["+i+"]", value = "Thamar" ,maxlength = "20" })
+                                 @Html.ValidationMessageFor(model => Model.MoreAcadimicDetials[i].acadimicTitle, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 lableAlign">تاريخ الحصول على المؤهل</label>
+                                <div class="col-md-6">
+                                  @Html.TextBoxFor(model=>Model.MoreAcadimicDetials[i].acadimicEndDate,new { @class= "col-md-6 n", type = "date", placeholder = "اليوم/الشهر/السنة", id = "acadimicEndDate["+i+"]" })
+                                  @Html.ValidationMessageFor(model => model.MoreAcadimicDetials[i].acadimicEndDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 lableAlign">الدولة التي حصلت منها على المؤهل</label>
+                                <div class="col-md-6">
+            @Html.DropDownListFor(model => Model.MoreAcadimicDetials[i].acadimicCountry, ViewData["countriesList"] as SelectList)
+            @Html.ValidationMessageFor(model => Model.MoreAcadimicDetials[i].acadimicCountry, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(model=>Model.MoreAcadimicDetials[i].acadimicCity,new { @class = "col-md-3", id = "acadimicCity["+i+"]", value = "Thamar", placeholder = "المدينة" ,maxlength = "20" })
+            @Html.ValidationMessageFor(model => Model.MoreAcadimicDetials[i].acadimicCity, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-md-2 lableAlign">صورة من المؤهل</label>
+                                <div class="col-md-6">
+            @Html.TextBoxFor(model => Model.MoreAcadimicDetials[i].acadimicCertificate, new {@class= "col-md-6 r" ,type="file",id= "acadimicCertificate["+i+"]",value=""})
+            @Html.ValidationMessageFor(model => Model.MoreAcadimicDetials[i].acadimicCertificate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            }*@
+        <div class="form-group more" id="acadimicMore">
+            <label class="col-md-3 more" id="acadmCerts" onclick="acadimicAdd()">المزيد +</label>
+        </div>
+
+    </div>
+            <!---//=================================================================================-->
+            <h4 class="h4Style">الدورات التدريبية / الشهادات الدولية &#9899;</h4>
+
+            <div class="divStyle">
+                <div class="form-group">
+                    <label class="col-md-2 lableAlign">هل لديك دورات تدريبه ؟</label>
+                    <div class="col-md-6">
+                        <label class="col-md-1 lableAlign">نعم</label>
+                        <!--<input class="col-md-2 h" type="radio" name="isYouWork" value="true" checked>-->
+                        @Html.RadioButtonFor(model => Model.hasCourse, true, new { @class = "col-md-2 h", id = "hasCourseChecked" })
+                        @Html.ValidationMessageFor(model => model.hasCourse, "", new { @class = "text-danger" })
+                        <label class="col-md-1 lableAlign">لا</label>
+                        @Html.RadioButtonFor(model => Model.hasCourse, false, new { @class = "col-md-2 h", @checked = true })
+                        @Html.ValidationMessageFor(model => model.hasCourse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @*@for(int i=0;i<Model.MoreCourseDetials.Count;i++)
+                                    {
+                                    <div class="form-group">
+                                        <label class="col-md-2 lableAlign">اسم الدورة</label>
+                                        <div class="col-md-6">
+                                           @Html.TextBoxFor(model=>Model.MoreCourseDetials[i].courseTitle,new { @class= "col-md-6",value="thamar", id = "courseTitle["+i+"]", maxlength = "20" })
+                    @Html.ValidationMessageFor(model => Model.MoreCourseDetials[i].courseTitle, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 lableAlign">الشهادة</label>
+                                        <div class="col-md-6">
+                    @Html.TextBoxFor(model=>Model.MoreCourseDetials[i].courseCertificate, new { @class = "col-md-6 r", type = "file",id = "courseCertificate[" + i + "]",value=""}))
+                    @Html.ValidationMessageFor(model => Model.MoreCourseDetials[i].courseCertificate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    }*@
+                <div class="form-group more" id="corceMore">
+                    <label class="col-md-3 more" id="courseCerts" onclick="corceAdd()">المزيد +</label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 lableAlign">هل لديك شهادات دولية ؟</label>
+                    <div class="col-md-6">
+                        <label class="col-md-1 lableAlign">نعم</label>
+                        @Html.RadioButtonFor(model => Model.hasworldCert, true, new { @class = "col-md-2 h", id = "hasWorldCertChecked" })
+                        @Html.ValidationMessageFor(model => Model.hasworldCert, "", new { @class = "text-danger" })
+                        <label class="col-md-1 lableAlign">لا</label>
+                        @Html.RadioButtonFor(model => Model.hasworldCert, false, new { @class = "col-md-2 h", @checked = true })
+                        @Html.ValidationMessageFor(model => Model.hasworldCert, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*@for(int i=0;i<Model.MoreExamDetials.Count;i++)
+                                    {
+                                    <div class="form-group">
+                                        <label class="col-md-2 lableAlign">اسم الشهادة</label>
+                                        <div class="col-md-6">
+                    @Html.DropDownListFor(model => Model.MoreExamDetials[i].examTitle, new List<SelectListItem>
+                        {
+                    new SelectListItem() {Text = "توفل", Value="tofel"},
+                    new SelectListItem() {Text = "ايليت", Value="elets"},
+                    new SelectListItem() {Text = "الرخصة الدولية لقيادة الحاسوب", Value="ic3"},
+                    new SelectListItem() {Text="سيسكو" , Value="cesco"}
+                        }, "-- اختيار --", new { @class= "col-md-6 m", id = "examTitle["+i+"]" })
+
+                    @Html.ValidationMessageFor(model => Model.MoreExamDetials[i].examTitle, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-2 lableAlign">صورة من الشهادة</label>
+                                        <div class="col-md-6">
+                    @Html.TextBoxFor(model=>Model.MoreExamDetials[i].examCertificate,new {@class= "col-md-6 r" ,type="file", id = "examCertificate["+i+"]" })
+                    @Html.ValidationMessageFor(model => Model.MoreExamDetials[i].examCertificate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    }*@
+                <div class="form-group more" id="examMore">
+                    <label class="col-md-3 more" id="examCerts" onclick="examAdd()">المزيد +</label>
+                </div>
+
+            </div>
+            <!---//=================================================================================-->
+            <h4 class="h4Style">اعمال تطوعية &#9899;</h4>
+
+            <div class="divStyle">
+
+                <div class="form-group">
+                    <label class="col-md-2 lableAlign">هل قمت باي اعمال تطوعية؟</label>
+                    <div class="col-md-6">
+                        <label class="col-md-1 lableAlign">نعم</label>
+                        @Html.RadioButtonFor(m => Model.isVoluntaryWork, true, new { @class = "col-md-2 h", id = "isVoluntWorkCheck" })
+                        <!-- <input class="col-md-2 h" type="radio" name="isVoluntaryWork" value="true" checked>-->
+                        @Html.ValidationMessageFor(model => Model.isVoluntaryWork, "", new { @class = "text-danger" })
+                        <label class="col-md-1 lableAlign">لا</label>
+                        @Html.RadioButtonFor(m => Model.isVoluntaryWork, false, new { @class = "col-md-2 h", @checked = true })
+                        <!-- <input class="col-md-2 h" type="radio" name="isVoluntaryWork" value="false">-->
+                        @Html.ValidationMessageFor(model => Model.isVoluntaryWork, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div id="VoluntaryWorkShowOrHide">
+                    @*@for (int i = 0; i < Model.MoreVoluntaryWorkDetials.Count; i++)
+                                           {
+                                            <div class="form-group">
+                        <label class="col-md-2 lableAlign">العمل التطوعي</label>
+                        <div class="col-md-6">
+                        @Html.TextBoxFor(model => Model.MoreVoluntaryWorkDetials[i].voluntaryWorkTitle, new { @class = "col-md-6", id = "voluntaryWorkTitle["+i+"]", value = "Thamar", maxlength = "20" })
+                        @Html.ValidationMessageFor(model => Model.MoreVoluntaryWorkDetials[i].voluntaryWorkTitle, "", new { @class = "text-danger" })
+                        </div>
+                                            </div>
+
+                                            <div class="form-group">
+                        <label class="col-md-2 lableAlign">تاريخ البدء</label>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => Model.MoreVoluntaryWorkDetials[i].voluntaryWorkStartDate, new { @class = "col-md-6 n", value = "Thamar",type="date", placeholder = "اليوم/الشهر/السنة", maxlength = "20" })
+                           @Html.ValidationMessageFor(model => Model.MoreVoluntaryWorkDetials[i].voluntaryWorkStartDate, "", new { @class = "text-danger" })
+                        </div>
+                                            </div>
+
+                                            <div class="form-group">
+                        <label class="col-md-2 lableAlign">تاريخ الانتهاء</label>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => Model.MoreVoluntaryWorkDetials[i].voluntaryWorkEndDate, new { @class = "col-md-6 n", value = "Thamar", type = "date", placeholder = "اليوم/الشهر/السنة", maxlength = "20" })
+                           @Html.ValidationMessageFor(model => Model.MoreVoluntaryWorkDetials[i].voluntaryWorkEndDate, "", new { @class = "text-danger" })
+                        </div>
+                                            </div>
+                                            <div class="form-group">
+                        <label class="col-md-2 lableAlign">وصف العمل التطوعي</label>
+                        <div class="col-md-6">
+                          @Html.TextAreaFor(model=>Model.MoreVoluntaryWorkDetials[i].voluntaryWorkDescribe,new {@class= "aligns m", id = "voluntaryWorkDescribe["+i+"]", rows="4",cols="50" ,maxlength = "200",value= "Thamar" })
+                          @Html.ValidationMessageFor(model => Model.MoreVoluntaryWorkDetials[i].voluntaryWorkDescribe, "", new { @class = "text-danger" })
+                        </div>
+                                            </div>
+
+                                            <div class="form-group">
+                        <label class="col-md-2 lableAlign">شهادة العمل التطوعي - إن وجدت</label>
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(model => Model.MoreVoluntaryWorkDetials[i].voluntaryCertificate, null, new { @class = "col-md-6 r",type = "file",id = "voluntaryCertificate["+i+"]", value = "" })
+                            @Html.ValidationMessageFor(model => Model.MoreVoluntaryWorkDetials[i].voluntaryCertificate, "", new { @class = "text-danger" })
+                        </div>
+                                            </div>
+                        }*@
+                    <div class="form-group more" id="voluntaryWorkMore">
+                        <label class="col-md-3 more" id="VolunCerts" onclick="voluntaryWorkAdd()">المزيد +</label>
+                    </div>
+                </div>
+            </div>
+            <!---//=================================================================================-->
+            <h4 class="h4Style">المهارات &#9899;</h4>
+            <div class="divStyle">
+                <div class="form-group">
+                    <label class="col-md-2 lableAlign">المهارة</label>
+                    @*@for (int i = 0; i < Model.Skills.Count; i++)
+                                          {
+                                            <div class="col-md-6">
+
+                        @Html.TextBoxFor(model => Model.Skills[i].skillName,new { @class = "col-md-6", id ="skill[" + i + "]" , value="Thamar" })
+                        @Html.ValidationMessageFor(model => Model.Skills[i].skillName, "", new { @class = "text-danger" })
+
+
+                                            </div>
+                                          }*@
+                </div>
+
+                <div class="form-group more" id="skillsMore">
+                    <label class="col-md-3 more" onclick="skillAdd()">المزيد +</label>
+                </div>
+            </div>
+            <!---//=================================================================================-->
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="تسجيل" class="btn btn-primary myBtn" id="save" />
+
+                </div>
+            </div>
+            <!--</form>-->
+
+            @*</div>*@
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section scripts{
+    <script id="script1">
+        $(function () {
+            nationalityAdd();
+            acadimicAdd();
+            skillAdd();
+
+            var WorkCerts = 0;
+            var acadmCerts = 1;
+            var courseCerts = 0;
+            var examCerts = 0;
+            var VolunCerts = 0;
+
+            $("#WorkCerts").click(function () {
+                ++WorkCerts;
+                alert("you clickrd on more of Work Cert");
+            });
+            $("#acadmCerts").click(function () {
+                ++acadmCerts;
+                alert("you clickrd on more of acadimic Cert");
+
+            });
+            $("#courseCerts").click(function () {
+                ++courseCerts;
+                alert("you clickrd on more of Course Cert");
+
+            });
+            $("#examCerts").click(function () {
+                ++examCerts;
+                alert("you clickrd on more of Exam Cert");
+
+            });
+            $("#VolunCerts").click(function () {
+                ++VolunCerts;
+                alert("you clickrd on more of Volunt Cert");
+
+            });
+            function checkPersonalPhoto() {
+                if ($("#personalPhoto").val() != "") {
+                    //Check if extension Enterd is Valid
+                    var fileName = $("#personalPhoto").val();
+                    var extensionImage = fileName.substr(fileName.lastIndexOf('.') + 1);
+                    var validExtensions = ['jpg', 'png', 'gif', 'bmp'];
+
+                    if ($.inArray(extensionImage, validExtensions) == -1) {
+                        $("#error-div").fadeIn();
+                        $("#view-error").text("رجا يجب ادخال مكان الصورة الشخصية احد هذه الأنواع من الصور jpg أو png أو gif أو bmp !");
+                        $("html, body").animate({ scrollTop: 0 }, "slow");
+                        return false;
+                    }
+
+                    //Check if image size is valid
+                    var fileSize = document.getElementById("personalPhoto").files[0].size / 1024 / 1024;
+                    if (fileSize > 2) {
+                        $("#error-div").fadeIn();
+                        $("#view-error").text("رجا قم بإدخال صورة شخصية اقل من 2 ميقا بايت !");
+                        $("html, body").animate({ scrollTop: 0 }, "slow");
+                        return false;
+                    }
+                }
+            }
+            function checkVoluntaryCertificate() {
+                alert("is Checking Now VoluntCert");
+                for (var i = 0; i < VolunCerts; i++) {
+                    var e = document.getElementById('voluntaryCertificate[' + i + ']');
+
+                    if (e.value != "") {
+                        //Check if extension Enterd is Valid
+                        var fileName = e.value;
+                        var extensionImage = fileName.substr(fileName.lastIndexOf('.') + 1);
+                        var validExtensions = ['jpg', 'png', 'gif', 'bmp','pdf'];
+
+                        if ($.inArray(extensionImage, validExtensions) == -1) {
+                            $("#error-div").fadeIn();
+                            $("#view-error").text("رجا يجب ادخال مكان شهادة العمل التطوعي احد هذه الأنواع من الملفات jpg أو png أو gif أو bmp أو pdf !");
+                            $("html, body").animate({ scrollTop: 0 }, "slow");
+                            return false;
+                        }
+
+                        //Check if image size is valid
+                        var fileSize = e.files[0].size / 1024 / 1024;
+                        if (fileSize > 2) {
+                            $("#error-div").fadeIn();
+                            $("#view-error").text("رجا قم بإدخال شهادة العمل التطوعي اقل من 2 ميقا بايت !");
+                            $("html, body").animate({ scrollTop: 0 }, "slow");
+                            return false;
+                        }
+                    }
+                }
+            }
+            function checkExamCertificate() {
+                alert("is Checked Now Exam Certificate ");
+                for (var i = 0; i < examCerts; i++) {
+
+                    var e = document.getElementById('examCertificate[' + i + ']');
+                    alert("Into For loop");
+                    if (e.value != "") {
+                        alert("file is not Null");
+                        //Check if extension Enterd is Valid
+                        var fileName = e.value;
+                        var extensionImage = fileName.substr(fileName.lastIndexOf('.') + 1);
+                        var validExtensions = ['jpg', 'png', 'gif', 'bmp','pdf'];
+
+                        if ($.inArray(extensionImage, validExtensions) == -1) {
+                            alert("Extention is allowed");
+
+                            $("#error-div").fadeIn();
+                            $("#view-error").text("رجا يجب ادخال مكان الشهادة الدولية احد هذه الأنواع من الملفات jpg أو png أو gif أو bmp أو pdf !");
+                            $("html, body").animate({ scrollTop: 0 }, "slow");
+                            return false;
+                        }
+
+                        //Check if image size is valid
+                        var fileSize = e.files[0].size / 1024 / 1024;
+                        if (fileSize > 2) {
+                            alert("file Size is not allowed");
+
+                            $("#error-div").fadeIn();
+                            $("#view-error").text("رجا قم بإدخال شهادة دولية اقل من 2 ميقا بايت !");
+                            $("html, body").animate({ scrollTop: 0 }, "slow");
+                            return false;
+                        }
+                    }
+                }
+            }
+            function checkCourseCertificate() {
+                alert("is Check Now Course Certificate");
+                for (var i = 0; i < courseCerts; i++) {
+                    var e = document.getElementById('courseCertificate[' + i + ']');
+
+                    if (e.value != "") {
+                        //Check if extension Enterd is Valid
+                        var fileName = e.value;
+                        var extensionImage = fileName.substr(fileName.lastIndexOf('.') + 1);
+                        var validExtensions = ['jpg', 'png', 'gif', 'bmp','pdf'];
+
+                        if ($.inArray(extensionImage, validExtensions) == -1) {
+                            $("#error-div").fadeIn();
+                            $("#view-error").text("رجا يجب ادخال مكان شهادة الدورة التدريبية احد هذه الأنواع من الملفات jpg أو png أو gif أو bmp أو pdf !");
+                            $("html, body").animate({ scrollTop: 0 }, "slow");
+                            return false;
+                        }
+
+                        //Check if image size is valid
+                        var fileSize = e.files[0].size / 1024 / 1024;
+                        if (fileSize > 2) {
+                            $("#error-div").fadeIn();
+                            $("#view-error").text("رجا قم بإدخال شهادة الدورة التدريبية اقل من 2 ميقا بايت !");
+                            $("html, body").animate({ scrollTop: 0 }, "slow");
+                            return false;
+                        }
+                    }
+                }
+            }
+            function checkAcadimicCertificate() {
+                alert("is Cleck Now Acadmic Certifcate");
+                for (var i = 0; i < acadmCerts; i++) {
+                    var e = document.getElementById('acadimicCertificate[' + i + ']');
+
+                    if (e.value != "") {
+                        //Check if extension Enterd is Valid
+                        var fileName = e.value;
+                        var extensionImage = fileName.substr(fileName.lastIndexOf('.') + 1);
+                        var validExtensions = ['jpg', 'png', 'gif', 'bmp', 'pdf'];
+
+                        if ($.inArray(extensionImage, validExtensions) == -1) {
+
+                            $("#error-div").fadeIn();
+                            $("#view-error").text("رجا يجب ادخال مكان شهادة المؤهل احد هذه الأنواع من الملفات  jpg أو png أو gif أو bmp أو pdf !");
+                            $("html, body").animate({ scrollTop: 0 }, "slow");
+                            return false;
+                        }
+
+                        //Check if image size is valid
+                        var fileSize = e.files[0].size / 1024 / 1024;
+                        if (fileSize > 2) {
+                            $("#error-div").fadeIn();
+                            $("#view-error").text("رجا قم بإدخال شهادة المؤهل اقل من 2 ميقا بايت !");
+                            $("html, body").animate({ scrollTop: 0 }, "slow");
+                            return false;
+                        }
+                    }
+                }
+            }
+            function checkWorkCertificate() {
+                alert("is Check Now WorkCertifcate");
+                for (var i = 0; i < WorkCerts; i++) {
+                    var e = document.getElementById('workCertificate[' + i + ']');
+
+                    if (e.value != "") {
+                        //Check if extension Enterd is Valid
+                        var fileName = e.value;
+                        var extensionImage = fileName.substr(fileName.lastIndexOf('.') + 1);
+                        var validExtensions = ['jpg', 'png', 'gif', 'bmp','pdf'];
+
+                        if ($.inArray(extensionImage, validExtensions) == -1) {
+                            $("#error-div").fadeIn();
+                            $("#view-error").text("رجا يجب ادخال مكان شهادة الخبرة العملية احد هذه الأنواع من الملفات jpg أو png أو gif أو bmp أو pdf !");
+                            $("html, body").animate({ scrollTop: 0 }, "slow");
+                            return false;
+                        }
+
+                        //Check if image size is valid
+                        var fileSize = e.files[0].size / 1024 / 1024;
+                        if (fileSize > 2) {
+                            $("#error-div").fadeIn();
+                            $("#view-error").text("رجا قم بإدخال شهادة خبرة عملية اقل من 2 ميقا بايت !");
+                            $("html, body").animate({ scrollTop: 0 }, "slow");
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            $("#save").click(function () {
+                alert("You Clicked Save");
+
+                checkPersonalPhoto();
+                checkVoluntaryCertificate();
+                checkExamCertificate();
+                checkCourseCertificate();
+                checkAcadimicCertificate();
+                checkWorkCertificate();
+            });
+            var firstWorkClick = 0;
+            $("#isWorkChecked").click(function () {
+                if (firstWorkClick == 0) {
+                    workAdd();
+                    firstWorkClick = 1;
+                    ++WorkCerts;
+                }
+            });
+            var firstworldClick = 0;
+            $("#hasWorldCertChecked").click(function () {
+                if (firstworldClick == 0) {
+                    examAdd();
+                    ++examCerts;
+                    firstworldClick = 1;
+                }
+            });
+            var firstCourseClick = 0;
+            $("#hasCourseChecked").click(function () {
+                if (firstCourseClick == 0) {
+                    corceAdd();
+                    firstCourseClick = 1;
+                    ++courseCerts;
+                }
+            });
+            var firstVoluntClick = 0;
+            $("#isVoluntWorkCheck").click(function () {
+                if (firstVoluntClick == 0) {
+                    voluntaryWorkAdd();
+                    firstVoluntClick = 1;
+                    VolunCerts
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,98 @@
+﻿@using Microsoft.AspNet.Identity
+@using LinkForEmployment.Models;
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoff" }))
+    {
+        var db = new ApplicationDbContext();
+        var userID = User.Identity.GetUserId();
+        var CurrentUser = db.Users.Where(a => a.Id == userID).SingleOrDefault();
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-left navbar-text">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong id="loggedinUser">مرحبا بك يا : @CurrentUser.FirstName </strong>
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </a>
+                <ul class="dropdown-menu" style="border:2px solid #3d3675;">
+                    <li>
+                        <div>
+                            <div class="row">
+                                <div class="col-sm-4">
+
+                                    <p class="text-center">
+                                        @{try
+                                            {
+                                                if (db.Users.Find(userID).UserType == "باحث عن وظيفة")
+                                                {
+                                                    if (db.JobSeekerInfoes.Find(userID).Id == userID) // Always true
+                                                    {
+   <img src="~/Uploads/@db.JobSeekerInfoes.Find(userID).personalPhoto" style="border:2px solid #3d3675; border-radius:50%; width:100px; height:100px; " />
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    if (db.Employers.Find(userID).Id == userID) // Always true
+                                                    {
+                                                        <img src="~/Uploads/@db.Employers.Find(userID).compLogo" style="border:2px solid #3d3675; border-radius:50%; width:100px; height:100px;" />
+                                                    }
+                                                }
+                                            }
+                                            catch (Exception e)
+                                            {
+                                                <img src="~/images/team4.jpg" style="border:2px solid #3d3675; border-radius:50%;" />
+                                            }
+
+                                        }
+                                        <!--Take the image from DB FOR Current User-->
+                                  
+                                    </p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p class="text-right">
+                                        <strong>
+                                            @CurrentUser.UserName
+                                        </strong>
+                                    </p>
+                                    <a href="#" style="margin-right:27px;">تعديل الملف الشخصي</a>
+                                    <a href="javascript:document.getElementById('logoff').submit()" class="btn btn-default" style="margin-top:10px; margin-right:30px;">
+                                        تسجيل الخروج
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+            @*<li>
+                    <a href="javascript:document.getElementById('logoff').submit()">
+                        <i class="glyphicon glyphicon-log-out"></i>
+                        تسجيل الخروج
+                    </a>
+                </li>
+                <li style="direction:rtl;">
+                    @Html.ActionLink("مرحبا بك يا : " + User.Identity.GetUserName(), "Index", "Manage")
+                </li>*@
+
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-left navbar-text">
+        <li>
+            <a href="~/Home/Index">
+                <input type="submit" value="الدخول" class="btn" />
+            </a>
+        </li>
+        <li>
+            <a href="~/Account/Register">
+                <input type="submit" value="تسجيل" class="btn" />
+            </a>
+        </li>
+
+    </ul>
+}
+<!---->
